@@ -1,0 +1,148 @@
+# DONATION SYSTEM - QUICK SETUP
+
+## ✅ Apa yang Sudah Siap
+
+**Backend**: ✅ Migration, Model, Controller, Service, Routes
+**Frontend**: ✅ Form UI, JavaScript, Midtrans integration
+**Database**: ✅ Tabel 'donations' sudah dibuat
+
+---
+
+## ⚠️ Yang Perlu Dilakukan
+
+### 1. Buat Akun Midtrans (5 min)
+```
+Buka: https://dashboard.midtrans.com
+Sign up → Verifikasi email → Login
+Settings → Merchant Information
+Copy credentials:
+  - Merchant ID
+  - Server Key (SB-Mid-server-xxx)
+  - Client Key (SB-Mid-client-xxx)
+```
+
+### 2. Update `.env` (1 min)
+```env
+MIDTRANS_IS_PRODUCTION=false
+MIDTRANS_MERCHANT_ID=G12345678
+MIDTRANS_SERVER_KEY=SB-Mid-server-xxxxxxxxxxxxxxxxxxxxxx
+MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxxxxxxxxxxxxxxxxxxxx
+```
+
+### 3. Clear Cache (1 min)
+```bash
+php artisan config:cache
+```
+
+### 4. Test (10 min)
+```
+1. Buka http://localhost:8000/donasi
+2. Isi form:
+   - Jenis: Zakat
+   - Program: Pendidikan
+   - Nominal: 50000
+   - Nama: Test
+   - Email: test@test.com
+   - Telepon: 081234567890
+3. Klik "Lanjut ke Pembayaran"
+4. Modal Midtrans muncul
+5. Pilih metode pembayaran
+6. Gunakan card: 4111 1111 1111 1111
+7. CVV: 123, Exp: 12/25
+8. Finish
+9. Check database:
+   sqlite3 database/database.sqlite
+   SELECT * FROM donations ORDER BY created_at DESC;
+```
+
+---
+
+## 📊 Database Check
+```bash
+sqlite3 database/database.sqlite
+
+# Lihat semua donasi
+SELECT transaction_id, payment_status, amount, donor_name FROM donations;
+
+# Filter berhasil
+SELECT * FROM donations WHERE payment_status = 'success';
+
+# Count by status
+SELECT payment_status, COUNT(*) as total FROM donations GROUP BY payment_status;
+```
+
+---
+
+## 🎯 Alur Sederhana
+
+```
+Form diisi
+  ↓
+Submit ke /api/donations
+  ↓
+Backend buat DB record
+  ↓
+Call Midtrans API → dapat snap token
+  ↓
+Tampilkan Midtrans modal
+  ↓
+User bayar
+  ↓
+Redirect ke /donation/finish (atau error)
+  ↓
+DB updated (payment_status = success)
+  ↓
+Selesai ✅
+```
+
+---
+
+## 📝 Files Created
+
+1. `app/Services/MidtransService.php` - API integration
+2. `app/Models/Donation.php` - Database model
+3. `app/Http/Controllers/DonationController.php` - Request handler
+4. `config/midtrans.php` - Configuration
+5. `database/migrations/2026_06_03_040433_create_donations_table.php` - Schema
+6. `DONATION_SETUP.md` - Full documentation
+7. `IMPLEMENTATION_SUMMARY.md` - Detailed summary
+
+---
+
+## 🔗 Test Card (Sandbox)
+
+- **Card**: 4111 1111 1111 1111
+- **CVV**: 123 (any)
+- **Exp**: 12/25 (future)
+
+---
+
+## ⚡ Key Endpoints
+
+| Method | URL | Purpose |
+|--------|-----|---------|
+| POST | `/api/donations` | Create donation & get snap token |
+| GET | `/donation/finish` | Success callback |
+| GET | `/donation/error` | Error callback |
+| GET | `/donation/pending` | Pending callback |
+| GET | `/api/donations/{id}/status` | Check status |
+
+---
+
+## 🆘 If Error
+
+1. Check `.env` - credentials ada?
+2. Check database - `SELECT * FROM donations;`
+3. Check logs - `tail storage/logs/laravel.log`
+4. Open browser console - F12 → check for JS errors
+5. Verify CSRF token - check HTML source `<meta name="csrf-token">`
+
+---
+
+## ✨ Done!
+
+Follow 4 steps di atas, then test. Should work! 🚀
+
+Untuk pertanyaan detail, baca:
+- `DONATION_SETUP.md` (lengkap)
+- `DONATION_CHECKLIST.md` (step-by-step)
