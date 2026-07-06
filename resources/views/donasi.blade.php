@@ -57,7 +57,7 @@
         const speech = new SpeechSynthesisUtterance();
         speech.text = "Ahlan wa Sahlan di Website Resmi LAZ Dar el-Iman Peduli. Jembatan Kebaikan, Mengalirkan Berkah untuk Sesama.";
         speech.lang = 'id-ID';
-        speech.rate = 0.9;
+        speech.rate = 0.9;git push.
         speech.pitch = 1;
         speech.volume = 1;
         
