@@ -58,6 +58,43 @@ class AuthController extends Controller
     }
 
     /**
+     * Show Admin register form
+     */
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register_admin');
+    }
+
+    /**
+     * Handle admin registration
+     */
+    public function registerAdmin(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Password tidak cocok',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'is_active' => true,
+            'role' => 'admin',
+        ]);
+
+        return redirect('/login')->with('success', 'Akun Admin Biasa berhasil dibuat. Silakan login.');
+    }
+
+    /**
      * Show login form
      */
     public function showLoginForm()
@@ -84,7 +121,7 @@ class AuthController extends Controller
             // Generate ulang session token untuk security
             $request->session()->regenerate();
 
-            if (Auth::user()->role === 'admin') {
+            if (in_array(Auth::user()->role, ['admin', 'super_admin'])) {
                 return redirect()->intended('/admin/dashboard')->with('success', 'Selamat datang di Panel Admin, ' . Auth::user()->name . '!');
             }
 
@@ -118,23 +155,54 @@ class AuthController extends Controller
     }
 
     /**
-     * Update profile (optional)
+     * Update profile
      */
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|min:10',
-            'address' => 'nullable|string|max:500',
-            'city' => 'nullable|string|max:100',
+            'name'     => 'required|string|max:255',
+            'phone'    => 'required|string|min:9|max:20',
+            'gender'   => 'nullable|string|in:Laki-laki,Perempuan',
+            'address'  => 'nullable|string|max:500',
+            'city'     => 'nullable|string|max:100',
             'province' => 'nullable|string|max:100',
+        ], [
+            'name.required'  => 'Nama wajib diisi',
+            'phone.required' => 'No HP wajib diisi',
+            'phone.min'      => 'No HP minimal 9 angka',
         ]);
 
         $user->update($validated);
 
         return back()->with('success', 'Profil Anda berhasil diperbarui.');
+    }
+
+    /**
+     * Update password
+     */
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'current_password' => 'required|string',
+            'password'         => 'required|string|min:8|confirmed',
+        ], [
+            'current_password.required' => 'Password saat ini wajib diisi',
+            'password.required'         => 'Password baru wajib diisi',
+            'password.min'              => 'Password baru minimal 8 karakter',
+            'password.confirmed'        => 'Konfirmasi password tidak cocok',
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Password saat ini tidak sesuai.'])->withInput();
+        }
+
+        $user->update(['password' => Hash::make($request->password)]);
+
+        return back()->with('success', 'Password berhasil diubah.');
     }
 }
 

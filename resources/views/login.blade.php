@@ -86,6 +86,8 @@
 
                         <div class="text-center mt-4">
                             <small class="text-muted">Belum punya akun? <a href="/register" class="text-primary fw-bold text-decoration-none">Daftar di sini</a></small>
+                            <br>
+                            <small class="text-muted mt-2 d-block"><a href="/registrasiadmin" class="text-secondary text-decoration-none"><i class="bi bi-shield-lock me-1"></i>Registrasi Admin Panel</a></small>
                         </div>
                     </div>
                 </div>

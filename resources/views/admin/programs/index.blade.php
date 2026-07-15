@@ -3,7 +3,10 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold">Manajemen Program Donasi</h3>
-    <a href="{{ route('admin.programs.create') }}" class="btn btn-primary fw-bold"><i class="bi bi-plus-circle me-2"></i>Tambah Program</a>
+    <div class="d-flex gap-2">
+        <a href="{{ route('admin.export.programs') }}" class="btn btn-success fw-bold"><i class="bi bi-file-earmark-excel me-2"></i>Export Excel</a>
+        <a href="{{ route('admin.programs.create') }}" class="btn btn-primary fw-bold"><i class="bi bi-plus-circle me-2"></i>Tambah Program</a>
+    </div>
 </div>
 
 <div class="card border-0 shadow-sm rounded-4">

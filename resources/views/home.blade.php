@@ -49,32 +49,70 @@
                                 </div>
                                 <div class="col-lg-6 text-center mt-4 mt-lg-0">
                                     <!-- GAMBAR PROFILE -->
-                                    <img src="{{ asset('assets/images/Foto Ustadz 1x1.png') }}" alt="Slide 1 - Profil Ustadz" class="slide-image img-fluid rounded shadow">
+                                    <img src="{{ asset('assets/images/Foto ustdz elvi.jpeg') }}" alt="Slide 1 - Profil Ustadz" class="slide-image img-fluid rounded shadow">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- SLIDE 2: MEMBANTU SAUDARA -->
-                    <div class="carousel-item">
-                        <div class="slide-card p-4 p-lg-5">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6">
-                                    <span class="badge bg-warning text-dark mb-3">Bersama Membangun</span>
-                                    <h1 class="display-5 fw-bold mb-3">Kita Bantu Saudara yang Membutuhkan</h1>
-                                    <p class="text-muted mb-4">LAZ Dareliman hadir untuk mengelola zakat, infak, sedekah, wakaf, dan berbagai program sosial secara amanah dan transparan.</p>
-                                    <div class="d-flex flex-column flex-sm-row gap-3">
-                                        <a href="#" class="btn btn-primary btn-lg">Donasi Sekarang</a>
-                                        <a href="#program" class="btn btn-outline-primary btn-lg">Lihat Program</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 text-center mt-4 mt-lg-0">
-                                    <!-- GAMBAR 1 -->
-                                    <img src="{{ asset('assets/images/berbagii.jpg') }}" alt="Slide 2 - Kemanusiaan" class="slide-image img-fluid rounded shadow">
-                                </div>
-                            </div>
+                   <!-- SLIDE 2: CICILAN KURBAN -->
+            <div class="carousel-item">
+             <div class="slide-card p-4 p-lg-5">
+             <div class="row align-items-center g-4"> <!-- Ditambah g-4 agar spacing antar kolom pas -->
+            
+            <!-- KOLOM TEKS (Diperbesar ke col-lg-7) -->
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark mb-3 px-3 py-2 fs-6 fw-semibold">
+                    <i class="bi bi-heart-fill me-1"></i> Bersama Berkurban
+                </span>
+                
+                <h1 class="display-4 fw-bold mb-3 text-dark lh-sm">
+                    Tebarkan Kebaikan Melalui Kurban
+                </h1>
+                
+                <p class="text-muted fs-5 mb-4 leading-relaxed">
+                    Mari persiapkan ibadah kurban terbaik Anda bersama LAZ Dareliman. Tabungan kurban Anda akan menyulut kebahagiaan dan senyuman bagi saudara-saudara yang membutuhkan.
+                </p>
+
+                <!-- FITUR TAMBAHAN (Mengisi ruang kosong agar seimbang dengan gambar) -->
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary-subtle text-primary rounded-circle p-2">
+                                ✓
+                            </span>
+                            <span class="fw-medium text-secondary">Mudah & Terjangkau</span>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary-subtle text-primary rounded-circle p-2">
+                                ✓
+                            </span>
+                            <span class="fw-medium text-secondary">Tepat Sasaran</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOMBOL CTA -->
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a href="#" class="btn btn-primary btn-lg px-4 py-3 shadow-sm fw-bold">
+                        Mari Berkurban Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <!-- KOLOM GAMBAR (Dikecilkan ke col-lg-5) -->
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                <!-- GAMBAR 1 -->
+                <img src="{{ asset('assets/images/cicilan kurban.jpeg') }}" 
+                     alt="Slide 2 - Kemanusiaan" 
+                     class="slide-image img-fluid rounded-4 shadow-lg w-100 style-img">
+            </div>
+
+        </div>
+    </div>
+</div>
 
                     <!-- SLIDE 3: PENDIDIKAN -->
                     <div class="carousel-item">
@@ -146,34 +184,34 @@
     <!-- LAYANAN UTAMA -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="text-center section-title mx-auto mb-5">
+            <div class="text-center section-title mx-auto mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Layanan Utama Kami</h2>
                 <p class="text-muted">Program yang dirancang untuk membantu keluarga, pendidikan, and pemberdayaan masyarakat.</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-zakat">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-zakat" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
                         <div class="mb-3 display-6 text-warning">&#127969;</div>
                         <h5 class="fw-bold">Zakat</h5>
                         <p class="text-muted">Distribusi zakat secara cepat dan amanah ke yang paling membutuhkan.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-infak">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-infak" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
                         <div class="mb-3 display-6 text-warning">&#128176;</div>
                         <h5 class="fw-bold">Infak & Sedekah</h5>
                         <p class="text-muted">Salurkan donasi infak dan sedekah untuk kegiatan sosial yang nyata.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-pemberdayaan">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-pemberdayaan" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
                         <div class="mb-3 display-6 text-warning">&#127979;</div>
                         <h5 class="fw-bold">Pemberdayaan</h5>
                         <p class="text-muted">Memberi bantuan dan pelatihan untuk kemandirian ekonomi.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-kemanusiaan">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center card-kemanusiaan" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
                         <div class="mb-3 display-6 text-warning">&#128155;</div>
                         <h5 class="fw-bold">Kemanusiaan</h5>
                         <p class="text-muted">Respon cepat untuk korban bencana dan keluarga terdampak.</p>
@@ -186,13 +224,13 @@
     <!-- PROGRAM UNGGULAN -->
     <section class="py-5" id="program">
         <div class="container">
-            <div class="text-center section-title mx-auto mb-5">
+            <div class="text-center section-title mx-auto mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Program Unggulan</h2>
                 <p class="text-muted">Program-program utama yang membantu masyarakat dan memberdayakan komunitas.</p>
             </div>
 
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
                     <div class="card h-100 shadow-sm card-edu">
                         <img src="https://placehold.co/600x400" class="card-img-top" alt="Program Pendidikan">
                         <div class="card-body">
@@ -202,7 +240,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
                     <div class="card h-100 shadow-sm card-human">
                         <img src="https://placehold.co/600x400" class="card-img-top" alt="Program Kemanusiaan">
                         <div class="card-body">
@@ -212,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
                     <div class="card h-100 shadow-sm card-dakwah">
                         <img src="https://placehold.co/600x400" class="card-img-top" alt="Program Dakwah">
                         <div class="card-body">
@@ -229,7 +267,7 @@
     <!-- ARTIKEL EDUKASI -->
     <section class="py-5">
         <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4" data-aos="fade-up">
                 <div>
                     <h2 class="fw-bold">Artikel Edukasi</h2>
                     <p class="text-muted">Berisi artikel dan panduan zakat, infak, sedekah, serta informasi keagamaan.</p>
@@ -238,7 +276,7 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card article-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Zakat Mal untuk Korban Musibah">
                         <div class="card-body">
@@ -251,7 +289,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card article-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Kewajiban Harta Selain Zakat">
                         <div class="card-body">
@@ -264,7 +302,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card article-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Zakat Harta yang Habis">
                         <div class="card-body">
@@ -284,7 +322,7 @@
     <!-- BERITA TERBARU -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-start mb-4">
+            <div class="d-flex justify-content-between align-items-start mb-4" data-aos="fade-up">
                 <div>
                     <h2 class="fw-bold">Berita Terbaru</h2>
                     <p class="text-muted">Update kegiatan dan kisah nyata dari program kami. Lihat lebih lengkap di halaman Berita.</p>
@@ -294,8 +332,8 @@
 
             @if($latestNews->isNotEmpty())
                 <div class="row g-4">
-                    @foreach($latestNews as $item)
-                        <div class="col-md-6 col-lg-4">
+                    @foreach($latestNews as $i => $item)
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                             <div class="card article-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                                 <img src="{{ $item->image_url ? asset($item->image_url) : 'https://via.placeholder.com/400x250?text=Berita' }}" class="card-img-top" alt="{{ $item->title }}" style="height: 220px; object-fit: cover;">
                                 <div class="card-body d-flex flex-column">
@@ -315,14 +353,66 @@
     </section>
 
     <!-- CTA BANNER CALL TO ACTION -->
-    <section class="py-5 text-white position-relative" style="background-image: linear-gradient(rgb(132, 216, 247), rgb(118, 202, 255)), url('{{ asset('assets/images/baground.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-        <div class="container text-center position-relative" style="z-index: 2;">
+    <section class="py-5 text-white position-relative" style="background-image: linear-gradient(rgba(13,110,253,0.85), rgba(132,216,247,0.9)), url('{{ asset('assets/images/baground.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="container text-center position-relative" style="z-index: 2;" data-aos="zoom-in" data-aos-duration="1000">
             <h2 class="fw-bold mb-3">Mari Menjadi Bagian Dari Kebaikan</h2>
-            <p class="mb-4">Bersama Dareliman Peduli, kontribusi Anda dapat membantu banyak saudara.</p>
-            <a href="/donasi" class="btn btn-primary btn-lg fw-bold">Donasi Sekarang</a>
+            <p class="mb-4 lead text-white-50">Bersama Dareliman Peduli, kontribusi Anda dapat membantu banyak saudara.</p>
+            <a href="/donasi" class="btn btn-warning btn-lg fw-bold rounded-pill px-5 shadow" style="transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Donasi Sekarang</a>
         </div>
     </section>
 
 </div>
 
+@if(isset($popup) && $popup->is_active)
+<!-- Global Promo Popup Modal -->
+<div class="modal fade" id="promoPopupModal" tabindex="-1" aria-labelledby="promoPopupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden position-relative">
+            <!-- Tombol Close -->
+            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 shadow-sm bg-dark bg-opacity-50" style="z-index: 10; border-radius: 50%; padding: 0.6rem;" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+            <!-- Gambar Popup -->
+            @if($popup->image_url)
+            <img src="{{ asset($popup->image_url) }}" alt="Popup Promo" class="img-fluid w-100" style="max-height: 400px; object-fit: cover;">
+            @endif
+            
+            <div class="modal-body text-center p-4">
+                <h4 class="fw-bold mb-3" id="promoPopupLabel">{{ $popup->title }}</h4>
+                @if($popup->description)
+                <p class="text-muted mb-4">{{ $popup->description }}</p>
+                @endif
+                
+                @if($popup->button_url && $popup->button_text)
+                <a href="{{ $popup->button_url }}" class="btn btn-primary btn-lg rounded-pill px-5 fw-semibold shadow-sm w-100 mb-2">{{ $popup->button_text }}</a>
+                @endif
+                
+                <button type="button" class="btn btn-link text-muted text-decoration-none small p-0 mt-2" data-bs-dismiss="modal">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 @endsection
+
+@if(isset($popup) && $popup->is_active)
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if(!sessionStorage.getItem('popupShown')) {
+        let delayInSeconds = {{ $popup->delay ?? 3 }};
+        setTimeout(function() {
+            var el = document.getElementById('promoPopupModal');
+            if(el) {
+                var promoModal = new bootstrap.Modal(el);
+                promoModal.show();
+                sessionStorage.setItem('popupShown', 'true');
+            }
+        }, delayInSeconds * 1000);
+    }
+});
+</script>
+@endpush
+@endif

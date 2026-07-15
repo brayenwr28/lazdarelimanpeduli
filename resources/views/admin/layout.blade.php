@@ -122,10 +122,41 @@
             border-radius: 14px;
             padding: 16px 20px;
         }
+
+        /* RESPONSIVE STYLES */
+        @media (max-width: 991.98px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050;
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0 !important;
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 1040;
+            }
+            .sidebar-overlay.show {
+                display: block;
+            }
+            .topbar {
+                padding: 15px 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="d-flex">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- Sidebar -->
         <div class="sidebar p-4" style="width: 260px; position: fixed; height: 100vh; overflow-y: auto; z-index: 1050;">
             <div class="sidebar-logo text-center mb-4">
@@ -151,8 +182,18 @@
                 <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
                     <i class="bi bi-newspaper"></i> Berita
                 </a>
+                
+                @if(auth()->user()->role === 'super_admin')
+                <a href="{{ route('admin.admins.index') }}" class="nav-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
+                    <i class="bi bi-people-fill {{ request()->routeIs('admin.admins.*') ? '' : 'text-warning' }}"></i> Kelola Admin
+                </a>
+                @endif
+
                 <a href="#" class="nav-link">
                     <i class="bi bi-moon-stars-fill"></i> Qurban
+                </a>
+                <a href="{{ route('admin.reports.users') }}" class="nav-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+                    <i class="bi bi-file-earmark-text-fill"></i> Laporan Anggota
                 </a>
                 <a href="{{ route('admin.popups.index') }}" class="nav-link {{ request()->routeIs('admin.popups.*') ? 'active' : '' }}">
                     <i class="bi bi-window-stack"></i> Popup
@@ -178,15 +219,23 @@
         <div class="flex-grow-1 main-content">
             <!-- Topbar -->
             <div class="topbar">
-                <h4 class="fw-bold m-0 text-dark" style="letter-spacing: -0.5px;">@yield('page_title', 'Dashboard')</h4>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light d-lg-none shadow-sm border" id="sidebarToggle" style="padding: 4px 10px;">
+                        <i class="bi bi-list fs-4"></i>
+                    </button>
+                    <h4 class="fw-bold m-0 text-dark d-none d-sm-block" style="letter-spacing: -0.5px;">@yield('page_title', 'Dashboard')</h4>
+                    <h5 class="fw-bold m-0 text-dark d-sm-none" style="letter-spacing: -0.5px;">@yield('page_title', 'Admin')</h5>
+                </div>
                 
                 <div class="d-flex align-items-center bg-light px-3 py-2 rounded-3 border" style="border-color: #edf2f7 !important;">
-                    <div class="rounded-circle text-white d-flex align-items-center justify-content-center fw-semibold me-2 shadow-sm" style="width: 36px; height: 36px; background-color: #0066b2; font-size: 14px;">
-                        A
+                    <div class="rounded-circle text-white d-flex align-items-center justify-content-center fw-semibold me-2 shadow-sm" style="width: 36px; height: 36px; background-color: {{ auth()->user()->role === 'super_admin' ? '#f39c12' : '#0066b2' }}; font-size: 14px;">
+                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                     </div>
                     <div class="d-flex flex-column text-start">
-                        <span class="fw-semibold text-dark lh-1" style="font-size: 13px; margin-bottom: 3px;">Admin Dareliman Peduli</span>
-                        <small class="text-muted" style="font-size: 11px;">Administrator</small>
+                        <span class="fw-semibold text-dark lh-1" style="font-size: 13px; margin-bottom: 3px;">{{ auth()->user()->name }}</span>
+                        <small class="{{ auth()->user()->role === 'super_admin' ? 'text-warning fw-bold' : 'text-muted' }}" style="font-size: 11px;">
+                            {{ auth()->user()->role === 'super_admin' ? '👑 Super Admin' : 'Admin Biasa' }}
+                        </small>
                     </div>
                 </div>
             </div>
@@ -221,6 +270,16 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.add('show');
+            document.getElementById('sidebarOverlay').classList.add('show');
+        });
+        document.getElementById('sidebarOverlay')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('show');
+            this.classList.remove('show');
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>

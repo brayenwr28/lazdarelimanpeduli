@@ -4,7 +4,10 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold text-dark m-0">Kelola Berita</h3>
-    <a href="{{ route('admin.news.create') }}" class="btn btn-primary fw-bold px-4 rounded-3"><i class="bi bi-plus-lg me-2"></i>Tambah Berita</a>
+    <div class="d-flex gap-2">
+        <a href="{{ route('admin.export.news') }}" class="btn btn-success fw-bold px-4 rounded-3"><i class="bi bi-file-earmark-excel me-2"></i>Export Excel</a>
+        <a href="{{ route('admin.news.create') }}" class="btn btn-primary fw-bold px-4 rounded-3"><i class="bi bi-plus-lg me-2"></i>Tambah Berita</a>
+    </div>
 </div>
 
 <div class="card border-0 shadow-sm rounded-4 overflow-hidden">

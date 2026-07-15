@@ -4,7 +4,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold text-dark m-0">Kelola Donasi</h3>
-    <a href="#" class="btn btn-success fw-bold px-4 rounded-3"><i class="bi bi-file-earmark-excel me-2"></i>Export Excel</a>
+    <a href="{{ route('admin.export.donations') }}" class="btn btn-success fw-bold px-4 rounded-3"><i class="bi bi-file-earmark-excel me-2"></i>Export Excel</a>
 </div>
 
 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
@@ -79,7 +79,7 @@
                                     <button type="submit" class="btn btn-sm btn-light rounded-circle text-secondary border d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Set Gagal"><i class="bi bi-x-lg"></i></button>
                                 </form>
                                 @endif
-                                <form action="#" method="POST" class="d-inline">
+                                <form action="{{ route('admin.donations.destroy', ['donation' => $donasi]) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus donasi ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-light rounded-circle text-secondary border d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Hapus"><i class="bi bi-trash"></i></button>

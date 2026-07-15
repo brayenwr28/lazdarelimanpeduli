@@ -6,19 +6,19 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class SuperAdminMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  Closure(Request): (Response)  $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && in_array(auth()->user()->role, ['admin', 'super_admin'])) {
+        if (auth()->check() && auth()->user()->role === 'super_admin') {
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Akses ditolak. Anda bukan admin.');
+        return redirect('/admin/dashboard')->with('error', 'Akses ditolak. Halaman ini khusus Super Admin.');
     }
 }

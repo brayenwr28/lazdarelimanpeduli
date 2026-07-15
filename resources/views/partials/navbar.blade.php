@@ -97,8 +97,8 @@
                             👤 {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            @if(Auth::user()->role === 'admin')
-                            <li><a class="dropdown-item fw-bold text-primary" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
+                            @if(in_array(Auth::user()->role, ['admin', 'super_admin']))
+                            <li><a class="dropdown-item fw-bold text-primary" href="{{ route('admin.dashboard') }}">{{ Auth::user()->role === 'super_admin' ? '👑 Super Admin Panel' : 'Admin Panel' }}</a></li>
                             <li><hr class="dropdown-divider"></li>
                             @endif
                             <li><a class="dropdown-item" href="/profile">Profil Saya</a></li>

@@ -6,8 +6,9 @@ use App\Http\Controllers\DonationController;
 
 Route::get('/', function () {
     $latestNews = \App\Models\News::where('status', 'published')->latest()->take(3)->get();
+    $popup = \App\Models\Popup::where('is_active', true)->first();
 
-    return view('home', compact('latestNews'));
+    return view('home', compact('latestNews', 'popup'));
 });
 
 Route::view('/tentang', 'tentang');
@@ -43,6 +44,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/registrasiadmin', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register');
+Route::post('/registrasiadmin', [AuthController::class, 'registerAdmin']);
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // ADMIN ROUTES
@@ -50,9 +54,24 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('programs', \App\Http\Controllers\Admin\ProgramController::class);
     Route::get('/donations', [\App\Http\Controllers\Admin\DonationController::class, 'index'])->name('donations.index');
+    Route::delete('/donations/{donation}', [\App\Http\Controllers\Admin\DonationController::class, 'destroy'])->name('donations.destroy');
     Route::resource('distributions', \App\Http\Controllers\Admin\DistributionController::class);
     Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
     Route::resource('popups', \App\Http\Controllers\Admin\PopupController::class)->only(['index', 'store']);
+
+    Route::middleware([\App\Http\Middleware\SuperAdminMiddleware::class])->group(function () {
+        Route::resource('admins', \App\Http\Controllers\Admin\AdminManagementController::class);
+    });
+
+    Route::get('reports/users', [\App\Http\Controllers\Admin\ReportController::class, 'users'])->name('reports.users');
+    Route::post('reports/users/{user}/reset-password', [\App\Http\Controllers\Admin\ReportController::class, 'resetPassword'])->name('reports.users.reset_password');
+
+    // EXPORT EXCEL ROUTES
+    Route::get('export/users', [\App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('export.users');
+    Route::get('export/donations', [\App\Http\Controllers\Admin\ExportController::class, 'exportDonations'])->name('export.donations');
+    Route::get('export/distributions', [\App\Http\Controllers\Admin\ExportController::class, 'exportDistributions'])->name('export.distributions');
+    Route::get('export/programs', [\App\Http\Controllers\Admin\ExportController::class, 'exportPrograms'])->name('export.programs');
+    Route::get('export/news', [\App\Http\Controllers\Admin\ExportController::class, 'exportNews'])->name('export.news');
 });
 
 // PROTECTED ROUTES (harus login)
@@ -61,4 +80,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/donasi/form', [DonationController::class, 'form'])->name('donation.form');
     Route::post('/donasi/form', [DonationController::class, 'store'])->name('donation.store');
     Route::get('/donasi/invoice/{code}', [DonationController::class, 'invoice'])->name('donation.invoice');
+
+    // PROFILE ROUTES
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::put('/profile', [AuthController::class, 'updateProfile'])->name('profile.update');
+    Route::put('/profile/password', [AuthController::class, 'updatePassword'])->name('profile.password');
 });

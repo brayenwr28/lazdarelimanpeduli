@@ -13,4 +13,11 @@ class DonationController extends Controller
         $donations = Donation::with('program')->latest()->get();
         return view('admin.donations.index', compact('donations'));
     }
+
+    public function destroy(Donation $donation)
+    {
+        $donation->delete();
+
+        return redirect()->route('admin.donations.index')->with('success', 'Donasi berhasil dihapus.');
+    }
 }

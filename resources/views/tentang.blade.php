@@ -3,10 +3,10 @@
 @section('content')
 
 <!-- Header Section -->
-<section class="py-5 text-center bg-light">
+<section class="py-5 text-center bg-light" data-aos="fade-down" data-aos-duration="800">
     <div class="container">
-        <span class="text-uppercase text-primary fw-semibold">About Me</span>
-        <h1 class="fw-bold mt-2">Profil Laz Dareliman Peduli</h1>
+        <span class="text-uppercase text-primary fw-semibold tracking-wider">Tentang Kami</span>
+        <h1 class="fw-bold mt-2 text-dark">Profil Laz Dareliman Peduli</h1>
     </div>
 </section>
 
@@ -15,21 +15,21 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <!-- Bagian Gambar dengan Efek Hover & Dekorasi -->
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="position-relative p-2">
                     <!-- Efek background dekoratif di belakang gambar -->
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 rounded translation-middle" style="transform: translate(-10px, -10px); z-index: 1;"></div>
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=60" 
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 rounded-4 translation-middle" style="transform: translate(-10px, -10px); z-index: 1;"></div>
+                    <img src="/assets/images/struktur laz dareliman peduli.jpeg" 
                          alt="Profil Dareliman" 
                          class="img-fluid rounded-4 shadow-lg position-relative" 
-                         style="z-index: 2; transition: transform 0.3s ease; object-fit: cover;"
-                         onmouseover="this.style.transform='scale(1.02)'" 
+                         style="z-index: 2; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); object-fit: cover;"
+                         onmouseover="this.style.transform='scale(1.03)'" 
                          onmouseout="this.style.transform='scale(1)'">
                 </div>
             </div>
             
             <!-- Bagian Teks -->
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="ps-lg-3">
                     <span class="text-uppercase text-primary fw-bold small tracking-wider mb-2 d-block">Tentang Kami</span>
                     <h3 class="fw-bold mb-4 position-relative pb-2" style="color: #74b6f8;">
@@ -60,18 +60,20 @@
 <!-- Visi & Misi -->
 <section class="py-5 bg-light">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Visi & Misi</h2>
+        <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="fw-bold text-dark">Visi & Misi</h2>
+            <div class="mx-auto bg-primary mt-2" style="width: 50px; height: 3px; border-radius: 2px;"></div>
         </div>
         <div class="row g-4 justify-content-center">
             
             <!-- Visi (Card Biru Gradasi Elegan) -->
-            <div class="col-12 col-lg-10">
-                <div class="card shadow border-0 mb-4 bg-primary bg-gradient text-white rounded-4">
-                    <div class="card-body p-4 p-lg-5">
-                        <div class="mb-3 display-6">🎯</div>
-                        <h4 class="fw-bold text-warning mb-3">Visi</h4>
-                        <p class="lead mb-0" style="opacity: 0.95; line-height: 1.8;">
+            <div class="col-12 col-lg-10" data-aos="zoom-in-up" data-aos-duration="1000">
+                <div class="card shadow-lg border-0 mb-4 bg-primary bg-gradient text-white rounded-4 overflow-hidden" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='none'">
+                    <div class="card-body p-4 p-lg-5 position-relative">
+                        <div class="position-absolute top-0 end-0 opacity-10 p-3" style="font-size: 8rem; line-height: 1; transform: translate(20%, -20%);">🎯</div>
+                        <div class="mb-3 display-6 position-relative z-1">🎯</div>
+                        <h4 class="fw-bold text-warning mb-3 position-relative z-1">Visi</h4>
+                        <p class="lead mb-0 position-relative z-1" style="opacity: 0.95; line-height: 1.8;">
                             Menjadi Lembaga Amil Zakat yang tunduk terhadap syari’at Islam, profesional, amanah, terpercaya, cepat, bermanfaat, dan tepat sasaran di Prov. Sumatera Barat & Indonesia.
                         </p>
                     </div>
@@ -79,8 +81,8 @@
             </div>
             
             <!-- Misi (Card Putih Bersih dengan Detail Aksen Biru) -->
-            <div class="col-12 col-lg-10">
-                <div class="card shadow border-0 rounded-4">
+            <div class="col-12 col-lg-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <div class="card shadow-lg border-0 rounded-4" style="transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='none'">
                     <div class="card-body p-4 p-lg-5">
                         <div class="d-flex align-items-center mb-4">
                             <div class="me-3 display-6 text-primary">📋</div>
@@ -144,12 +146,12 @@
 </section>
 
 <!-- Filosofi Logo Section -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-white">
     <div class="container">
         <div class="row align-items-center g-4">
             
-            <!-- SEBELAH KIRI: Deskripsi Filosofi Logo (Bentuk Card Modern) -->
-            <div class="col-lg-7 order-2 order-lg-1">
+            <!-- SEBELAH KIRI: Deskripsi Filosofi Logo -->
+            <div class="col-lg-7 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
                 <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white" style="border-left: 5px solid #0dcaf0 !important;">
                     <div class="mb-3">
                         <span class="badge bg-info text-dark px-3 py-2 rounded-pill fw-semibold">Filosofi Lembaga</span>
@@ -183,7 +185,7 @@
             </div>
 
             <!-- SEBELAH KANAN: Gambar Logo -->
-            <div class="col-lg-5 order-1 order-lg-2 text-center">
+            <div class="col-lg-5 order-1 order-lg-2 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="position-relative p-2">
                     <!-- Ornamen dekoratif latar belakang berwarna biru terang -->
                     <div class="position-absolute top-50 start-50 translate-middle bg-info opacity-10 rounded-circle" style="width: 80%; height: 80%; filter: blur(30px); z-index: 0;"></div>
@@ -198,10 +200,10 @@
 </section>
 
 <!-- Penghargaan Section -->
-<section class="py-5 bg-white">
+<section class="py-5 bg-light">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold position-relative d-inline-block pb-2">
+        <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="fw-bold position-relative d-inline-block pb-2 text-dark">
                 Penghargaan
                 <span class="position-absolute bottom-0 start-50 translate-middle-x" style="width: 50px; height: 3px; border-radius: 2px; background-color: #0d6efd;"></span>
             </h2>
@@ -210,7 +212,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <!-- List Penghargaan 1 -->
-                <div class="card border-0 border-bottom rounded-0 py-4 mb-2 style-award" style="transition: all 0.3s ease;">
+                <div class="card border-0 shadow-sm rounded-4 py-4 mb-3 style-award px-3" data-aos="fade-up" data-aos-delay="100" style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.classList.add('shadow')" onmouseout="this.style.transform='none'; this.classList.remove('shadow')">
                     <div class="row align-items-center g-4">
                         <div class="col-sm-3 col-md-2 text-sm-start text-center">
                             <h5 class="fw-bold text-dark mb-1">2025</h5>
@@ -226,7 +228,7 @@
                 </div>
 
                 <!-- List Penghargaan 2 -->
-                <div class="card border-0 border-bottom rounded-0 py-4 mb-2 style-award" style="transition: all 0.3s ease;">
+                <div class="card border-0 shadow-sm rounded-4 py-4 mb-3 style-award px-3" data-aos="fade-up" data-aos-delay="200" style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.classList.add('shadow')" onmouseout="this.style.transform='none'; this.classList.remove('shadow')">
                     <div class="row align-items-center g-4">
                         <div class="col-sm-3 col-md-2 text-sm-start text-center">
                             <h5 class="fw-bold text-dark mb-1">2025</h5>
@@ -242,7 +244,7 @@
                 </div>
 
                 <!-- List Penghargaan 3 -->
-                <div class="card border-0 rounded-0 py-4 style-award" style="transition: all 0.3s ease;">
+                <div class="card border-0 shadow-sm rounded-4 py-4 style-award px-3" data-aos="fade-up" data-aos-delay="300" style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.classList.add('shadow')" onmouseout="this.style.transform='none'; this.classList.remove('shadow')">
                     <div class="row align-items-center g-4">
                         <div class="col-sm-3 col-md-2 text-sm-start text-center">
                             <h5 class="fw-bold text-dark mb-1">2024</h5>
@@ -262,12 +264,13 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5 text-white position-relative" style="background-image: linear-gradient(rgb(132, 216, 247), rgb(118, 202, 255)), url('{{ asset('assets/images/baground.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <div class="container text-center position-relative" style="z-index: 2;">
+<section class="py-5 text-white position-relative overflow-hidden" style="background-image: linear-gradient(rgba(13, 110, 253, 0.8), rgba(132, 216, 247, 0.9)), url('{{ asset('assets/images/baground.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="container text-center position-relative" style="z-index: 2;" data-aos="zoom-in" data-aos-duration="1000">
         <h2 class="fw-bold mb-3">Mari Menjadi Bagian Dari Kebaikan</h2>
-        <p class="mb-4 text-white-60">Bersama Dareliman Peduli, kontribusi Anda dapat membantu banyak saudara.</p>
-<a href="donasi" class="btn btn-primary btn-lg fw-bold">Donasi Sekarang</a>
+        <p class="mb-4 text-white-50 lead">Bersama Dareliman Peduli, kontribusi Anda dapat membantu banyak saudara kita.</p>
+        <a href="{{ url('donasi') }}" class="btn btn-warning btn-lg fw-bold shadow-lg px-5 rounded-pill" style="transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Donasi Sekarang</a>
     </div>
 </section>
+
 
 @endsection
